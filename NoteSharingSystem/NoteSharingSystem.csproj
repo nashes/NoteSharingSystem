@@ -143,16 +143,13 @@
     <Compile Include="Areas\Students_A\Controllers\HomeController.cs" />
     <Compile Include="Areas\Students_A\Students_AAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="ExtensionClass\ViewHelperClass.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902221542471_Initial.cs" />
-    <Compile Include="Migrations\201902221542471_Initial.Designer.cs">
-      <DependentUpon>201902221542471_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902250810235_initial2.cs" />
-    <Compile Include="Migrations\201902250810235_initial2.Designer.cs">
-      <DependentUpon>201902250810235_initial2.cs</DependentUpon>
+    <Compile Include="Migrations\201902261218129_initial.cs" />
+    <Compile Include="Migrations\201902261218129_initial.Designer.cs">
+      <DependentUpon>201902261218129_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Deparmant.cs" />
@@ -164,6 +161,7 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="DAL\NoteSharingDb.cs" />
+    <Compile Include="Models\ViewModels\DepartmantCreateView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -415,14 +413,6 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -480,6 +470,16 @@
     <Content Include="Areas\Students_A\Views\web.config" />
     <Content Include="Areas\Students_A\Views\Home\StudentIndex.cshtml" />
     <Content Include="Areas\Lecturers_A\Views\web.config" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\View.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -612,18 +612,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902221542471_Initial.resx">
-      <DependentUpon>201902221542471_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902250810235_initial2.resx">
-      <DependentUpon>201902250810235_initial2.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <EmbeddedResource Include="Migrations\201902261218129_initial.resx">
+      <DependentUpon>201902261218129_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,7 +3,7 @@ namespace NoteSharingSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -81,18 +81,31 @@ namespace NoteSharingSystem.Migrations
                         Content = c.String(),
                         Lecture_Id = c.Int(),
                         Publisher_Id = c.Int(),
+                        rate_Id = c.Int(),
                         Instructer_Id = c.Int(),
                         Student_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Lectures", t => t.Lecture_Id)
                 .ForeignKey("dbo.Identities", t => t.Publisher_Id)
+                .ForeignKey("dbo.Rates", t => t.rate_Id)
                 .ForeignKey("dbo.Instructers", t => t.Instructer_Id)
                 .ForeignKey("dbo.Students", t => t.Student_Id)
                 .Index(t => t.Lecture_Id)
                 .Index(t => t.Publisher_Id)
+                .Index(t => t.rate_Id)
                 .Index(t => t.Instructer_Id)
                 .Index(t => t.Student_Id);
+            
+            CreateTable(
+                "dbo.Rates",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        numberOfRate = c.Int(nullable: false),
+                        totalPoint = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Universities",
@@ -146,6 +159,7 @@ namespace NoteSharingSystem.Migrations
             DropForeignKey("dbo.Students", "Deparmant_Id", "dbo.Deparmants");
             DropForeignKey("dbo.Instructers", "university_Id", "dbo.Universities");
             DropForeignKey("dbo.Notes", "Instructer_Id", "dbo.Instructers");
+            DropForeignKey("dbo.Notes", "rate_Id", "dbo.Rates");
             DropForeignKey("dbo.Notes", "Publisher_Id", "dbo.Identities");
             DropForeignKey("dbo.Notes", "Lecture_Id", "dbo.Lectures");
             DropForeignKey("dbo.Lectures", "Instructer_Id", "dbo.Instructers");
@@ -158,6 +172,7 @@ namespace NoteSharingSystem.Migrations
             DropIndex("dbo.Students", new[] { "Deparmant_Id" });
             DropIndex("dbo.Notes", new[] { "Student_Id" });
             DropIndex("dbo.Notes", new[] { "Instructer_Id" });
+            DropIndex("dbo.Notes", new[] { "rate_Id" });
             DropIndex("dbo.Notes", new[] { "Publisher_Id" });
             DropIndex("dbo.Notes", new[] { "Lecture_Id" });
             DropIndex("dbo.Instructers", new[] { "university_Id" });
@@ -170,6 +185,7 @@ namespace NoteSharingSystem.Migrations
             DropTable("dbo.StudentLectures");
             DropTable("dbo.Students");
             DropTable("dbo.Universities");
+            DropTable("dbo.Rates");
             DropTable("dbo.Notes");
             DropTable("dbo.Identities");
             DropTable("dbo.Instructers");

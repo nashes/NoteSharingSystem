@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using NoteSharingSystem.DAL;
 using NoteSharingSystem.Models;
+using System.Data.Entity.SqlServer;
+using NoteSharingSystem.ExtensionClass;
+using NoteSharingSystem.Models.ViewModels;
 
 namespace NoteSharingSystem.Areas.Admin.Controllers
 {
@@ -40,7 +43,15 @@ namespace NoteSharingSystem.Areas.Admin.Controllers
         // GET: Admin/DeparmantsAdmin/Create
         public ActionResult Create()
         {
-            return View();
+            var identities = db.Identities.Where(x => x.Authority == 0).Select(x=> new{
+            Value=x.Id,
+            Text=x.Name+" "+x.Surname
+            }).ToList();
+            var universities = db.Universities.Select(x => new { Value = x.Id,Text=x.Name }).ToList();
+
+            DepartmantCreateView deparmantCreateView = new DepartmantCreateView(new Deparmant(), identities, universities);
+        
+            return View(deparmantCreateView);
         }
 
         // POST: Admin/DeparmantsAdmin/Create
@@ -48,16 +59,20 @@ namespace NoteSharingSystem.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Deparmant deparmant)
+        public async Task<ActionResult> Create( DepartmantCreateView departmantCreateView)
         {
+            
+   
+            departmantCreateView.deparmant.presedent = db.Identities.Find(Convert.ToInt32(departmantCreateView.presedent));
+            departmantCreateView.deparmant.university = db.Universities.Find(Convert.ToInt32(departmantCreateView.university));
             if (ModelState.IsValid)
             {
-                db.Departmants.Add(deparmant);
+                db.Departmants.Add(departmantCreateView.deparmant);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(deparmant);
+            return View(departmantCreateView.deparmant);
         }
 
         // GET: Admin/DeparmantsAdmin/Edit/5

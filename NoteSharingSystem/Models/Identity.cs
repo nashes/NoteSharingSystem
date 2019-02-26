@@ -19,7 +19,9 @@ namespace NoteSharingSystem.Models
         public string Password { get; set; }
         public int Authority { get; set; }
 
-
-
+        public static implicit operator string(Identity v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

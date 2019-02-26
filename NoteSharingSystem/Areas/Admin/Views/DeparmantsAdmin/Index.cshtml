@@ -17,6 +17,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.presedent)
+        </th>
+        
         <th></th>
     </tr>
 
@@ -24,6 +28,11 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.presedent.Name)
+        
+            @Html.DisplayFor(modelItem => item.presedent.Surname)
         </td>
         <td class="align-self-lg-end">
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" }) |
