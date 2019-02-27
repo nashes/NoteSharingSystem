@@ -20,8 +20,8 @@ namespace NoteSharingSystem.DAL
     }
 
         public virtual DbSet<Identity> Identities { get; set; }
-        public virtual DbSet<Student>  Students{ get; set; }
-        public virtual DbSet<Instructer> Instructers{ get; set; }
+       
+       
         public virtual DbSet<Note>   Notes { get; set; }
         public virtual DbSet<Lecture> Lectures{ get; set; }
         public virtual DbSet<Deparmant>  Departmants { get; set; }

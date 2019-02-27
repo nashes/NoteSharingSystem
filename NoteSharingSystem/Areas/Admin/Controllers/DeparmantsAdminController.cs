@@ -10,7 +10,7 @@ using System.Web.Mvc;
 using NoteSharingSystem.DAL;
 using NoteSharingSystem.Models;
 using System.Data.Entity.SqlServer;
-using NoteSharingSystem.ExtensionClass;
+
 using NoteSharingSystem.Models.ViewModels;
 
 namespace NoteSharingSystem.Areas.Admin.Controllers

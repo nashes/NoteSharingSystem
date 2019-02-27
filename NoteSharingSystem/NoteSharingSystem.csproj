@@ -134,16 +134,13 @@
     <Compile Include="Areas\Admin\Controllers\DeparmantsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\IdentitiesAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\InstructersAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\LecturesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\NotesAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\StudentsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\UniversitiesAdminController.cs" />
     <Compile Include="Areas\Lecturers_A\Lecturer_AAreaRegistration.cs" />
     <Compile Include="Areas\Students_A\Controllers\HomeController.cs" />
     <Compile Include="Areas\Students_A\Students_AAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="ExtensionClass\ViewHelperClass.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -151,17 +148,21 @@
     <Compile Include="Migrations\201902261218129_initial.Designer.cs">
       <DependentUpon>201902261218129_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902270917579_virtual1.cs" />
+    <Compile Include="Migrations\201902270917579_virtual1.Designer.cs">
+      <DependentUpon>201902270917579_virtual1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Deparmant.cs" />
     <Compile Include="Models\Identity.cs" />
-    <Compile Include="Models\Instructer.cs" />
     <Compile Include="Models\Lecture.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Rate.cs" />
-    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="DAL\NoteSharingDb.cs" />
     <Compile Include="Models\ViewModels\DepartmantCreateView.cs" />
+    <Compile Include="Models\ViewModels\LectureViewCreate.cs" />
+    <Compile Include="Models\ViewModels\NoteViewCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -442,21 +443,11 @@
     <Content Include="Areas\Admin\Views\DeparmantsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DeparmantsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DeparmantsAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\InstructersAdmin\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\InstructersAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\InstructersAdmin\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\InstructersAdmin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\InstructersAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LecturesAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\LecturesAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\LecturesAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\LecturesAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\LecturesAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\NotesAdmin\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\NotesAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\NotesAdmin\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\NotesAdmin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\NotesAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\StudentsAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\StudentsAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\StudentsAdmin\Details.cshtml" />
@@ -620,6 +611,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902261218129_initial.resx">
       <DependentUpon>201902261218129_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902270917579_virtual1.resx">
+      <DependentUpon>201902270917579_virtual1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

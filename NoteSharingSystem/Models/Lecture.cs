@@ -14,8 +14,8 @@ namespace NoteSharingSystem.Models
         public int Capacity { get; set; }
         public int term  { get; set; }
         public int MyProperty { get; set; }
-        public virtual Instructer Instructer { get; set; }
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual Identity instructer { get; set; }
+        
         public virtual ICollection<Note> Notes { get; set; }
         public virtual Deparmant Deparmant { get; set; }
 

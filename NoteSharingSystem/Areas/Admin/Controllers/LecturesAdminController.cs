@@ -9,9 +9,12 @@ using System.Web;
 using System.Web.Mvc;
 using NoteSharingSystem.DAL;
 using NoteSharingSystem.Models;
+using NoteSharingSystem.Models.ViewModels;
 
 namespace NoteSharingSystem.Areas.Admin.Controllers
 {
+    
+
     public class LecturesAdminController : Controller
     {
         private NoteSharingDb db = new NoteSharingDb();
@@ -40,7 +43,11 @@ namespace NoteSharingSystem.Areas.Admin.Controllers
         // GET: Admin/LecturesAdmin/Create
         public ActionResult Create()
         {
-            return View();
+            
+            LectureViewCreate lectureViewCreate = new LectureViewCreate(
+                db.Identities.Where(x=>x.Authority==0).Select(x=> new { Value =x.Id,Text=x.Name+ " " + x.Surname }),
+                db.Departmants.Select(x => new { Value = x.Id, Text = x.Name }));
+            return View(lectureViewCreate);
         }
 
         // POST: Admin/LecturesAdmin/Create
@@ -48,8 +55,15 @@ namespace NoteSharingSystem.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Capacity,term,MyProperty")] Lecture lecture)
+        public async Task<ActionResult> Create( LectureViewCreate lectureViewCreate)
         {
+            Lecture lecture = new Lecture();
+            lecture.Name = lectureViewCreate.Name;
+            lecture.Capacity = lectureViewCreate.Capacity;
+            lecture.term = lectureViewCreate.term;
+            lecture.MyProperty = lectureViewCreate.MyProperty;
+            lecture.instructer = db.Identities.Find(Convert.ToInt32(lectureViewCreate.instructer));
+
             if (ModelState.IsValid)
             {
                 db.Lectures.Add(lecture);
